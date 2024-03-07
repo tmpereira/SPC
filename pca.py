@@ -27,17 +27,16 @@ def scores(dados,a,b):
         (0.39,0.58,0.92),(0.50,0.50,0),(1,0.89,0.76),(0.96,0.96,0.86),
         (0,1,1)]     
     pcadata = pca(dados['r'])
-    a = 3
-    b = 2
-    latent = np.round(pcadata[2]/pcadata[2].sum(),4)
+    latent = np.round(pcadata[2]/pcadata[2].sum(),5)
+    print(latent[:10])
     leng = str(dados['arqs'])
     leng = leng.split('::')
     for i in range(1,dados['g'].max()+1):
         sel = dados['g'] == i
-        plt.scatter(pcadata[0][sel,a+1],pcadata[0][sel,b+1],color=colmap[i])
+        plt.scatter(pcadata[0][sel,a-1],pcadata[0][sel,b-1],color=colmap[i])
     plt.legend(leng)
-    plt.xlabel('pc_' +str(a+1) + '  ' + str(100*latent[0,a+1]) + '%')
-    plt.ylabel('pc_' +str(b+1)+ '  ' + str(100*latent[0,b+1]) + '%')
+    plt.xlabel('pc_' +str(a) + '  ' + str(100*latent[0,a-1])[:5] + '%')
+    plt.ylabel('pc_' +str(b)+ '  ' + str(100*latent[0,b-1])[:5] + '%')
     plt.title('grafico de scatter plot')
     
 # funçao para o loading plot oriundo da analise de PCA
