@@ -24,9 +24,7 @@ def aplot(data):
     for i in range(1,data['g'].max()+1):
         sel = data['g']==i
         d = data['r'][sel,:]
-        print(d.shape[0])
         for j in range(d.shape[0]):
-            print(j)
             plt.plot(data['wn'],d[j,:],color=colmap[i])
     legenda = str(data['arqs'])
     legenda = legenda.split('::')
